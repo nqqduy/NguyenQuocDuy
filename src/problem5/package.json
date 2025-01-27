@@ -1,0 +1,43 @@
+{
+  "name": "problem5",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "cross-env NODE_ENV=production node -r ts-node/register -r tsconfig-paths/register dist/index.js",
+    "dev": "cross-env NODE_ENV=development nodemon --watch src --ext ts,json --exec npx ts-node -r tsconfig-paths/register src/index.ts",
+    "migration:create": "cd src/migrations && npx typeorm migration:create",
+    "typeorm": "typeorm-ts-node-commonjs -d src/config/ormconfig.ts",
+    "migration:run": "cross-env NODE_ENV=development npm run typeorm migration:run ",
+    "migration:revert": "npm run typeorm migration:revert "
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@types/cors": "2.8.17",
+    "@types/express": "5.0.0",
+    "@types/node": "22.10.7",
+    "ts-node": "10.9.2",
+    "typescript": "5.7.3"
+  },
+  "dependencies": {
+    "class-transformer": "0.5.1",
+    "class-validator": "0.14.1",
+    "cors": "2.8.5",
+    "cross-env": "7.0.3",
+    "dotenv": "16.4.7",
+    "express": "4.21.2",
+    "helmet": "8.0.0",
+    "pg": "8.13.1",
+    "tsconfig-paths": "4.2.0",
+    "typeorm": "0.3.20",
+    "winston": "3.17.0",
+    "zod": "3.24.1"
+  },
+  "_moduleAliases": {
+    "src": "./dist"
+  }
+}
